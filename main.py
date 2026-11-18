@@ -32,7 +32,10 @@ import struct
 import sys
 
 SOURCE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "entry.png")
-DEST_DIR = "/output"
+# The grader writes to /output; outside its container MAKEFUN_OUTPUT_DIR
+# stands in for it (the starter's convention), so a local run can point
+# the output elsewhere without changing the program.
+DEST_DIR = os.environ.get("MAKEFUN_OUTPUT_DIR", "/output")
 DEST = os.path.join(DEST_DIR, "entry.png")
 
 MAX_BYTES = 1 * 1024 * 1024          # 1 MiB
